@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIos: 1,
-                                backgroundColor: Colors.pink[50],
+                                backgroundColor: Colors.blue[50],
                                 textColor: Colors.black38,
                                 fontSize: 16.0
                               );
@@ -103,10 +103,12 @@ class _LoginPageState extends State<LoginPage> {
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.CENTER,
                                   timeInSecForIos: 1,
-                                  backgroundColor: Colors.pink[50],
+                                  backgroundColor: Colors.blue[50],
                                   textColor: Colors.black38,
                                   fontSize: 16.0
                               );
+                              _pwdController.text='';
+                              _unameController.text='';
                             }
                           }
                         },
@@ -144,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                       margin:EdgeInsets.fromLTRB(10.0, 20.0, 10.0, 20.0),
                       child: Text('其它登录方式',style: TextStyle(color: Colors.black54),),
                     ),
-                     Container(
+                    Container(
                       margin: EdgeInsets.all(15.0),
                       width: 110.0,
                       decoration: BoxDecoration(
@@ -162,15 +164,28 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
-                      child: Image.asset('images/icons/qq.png',width: 64.0,height: 64.0,),
+                      child: InkWell(
+                        child: Image.asset('images/icons/qq.png',width: 64.0,height: 64.0,),
+                        onTap: (){},
+                      )
                       // child:Icon(IconData(0xe605,fontFamily: 'MyIcons')),
                     ),
                     Container(
-                      child: Image.asset('images/icons/weixin.png',width: 64.0,height: 64.0,),
+                      child: InkWell(
+                        child: Image.asset('images/icons/weixin.png',width: 64.0,height: 64.0,),
+                        onTap: (){
+
+                        },
+                      ),
                       //  child:Icon(IconData(0xe603,fontFamily: 'MyIcons')),
                     ),
                     Container(
-                      child: Image.asset('images/icons/sina.png',width: 64.0,height: 64.0,),
+                      child: InkWell(
+                        child: Image.asset('images/icons/sina.png',width: 64.0,height: 64.0,),
+                        onTap: (){
+                          
+                        },
+                      ),
                       //  child:Icon(IconData(0xe646,fontFamily: 'MyIcons')),
                     )
                   ],

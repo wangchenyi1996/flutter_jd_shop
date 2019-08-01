@@ -36,12 +36,8 @@ class _TopNavState extends State<TopNav>{
     super.initState();
   }
 
-
-  List<Widget> _GridViewNavList() {
-    List<Widget> list = new List();
-    for(var i=0;i<topNavData.length;i++){
-      list.add(
-        InkWell(
+   Widget _gridViewItemUI(BuildContext context, item) {
+    return  InkWell(
         onTap: () {
           showDialog(
             context: context,
@@ -50,7 +46,7 @@ class _TopNavState extends State<TopNav>{
               return CupertinoAlertDialog(
                 content: new SingleChildScrollView(
                   child: ListBody(
-                    children: <Widget>[Text("点击了${topNavData[i].navText}导航")],
+                    children: <Widget>[Text("亲，你点击了${item.navText}")],
                   ),
                 ),
                 actions: <Widget>[
@@ -77,22 +73,72 @@ class _TopNavState extends State<TopNav>{
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(top: 8),
-                child: Image.network(topNavData[i].icons,
+                child: Image.network(item.icons,
                     height: 60.0, width: 60.0),
               ),
               Text(
-                topNavData[i].navText,
+                item.navText,
                 style: TextStyle(color: Colors.black38, fontSize: 12.0),
               )
             ],
           ),
         )
-      )
-    
       );
-    }
-    return list;
   }
+
+  // List<Widget> _GridViewNavList() {
+  //   List<Widget> tempNavList=topNavData.map((item){
+      // InkWell(
+      //   onTap: () {
+      //     showDialog(
+      //       context: context,
+      //       barrierDismissible: false,
+      //       builder: (context) {
+      //         return CupertinoAlertDialog(
+      //           content: new SingleChildScrollView(
+      //             child: ListBody(
+      //               children: <Widget>[Text("点击了${item.id}")],
+      //             ),
+      //           ),
+      //           actions: <Widget>[
+      //             FlatButton(
+      //               child: Text("确定"),
+      //               onPressed: () {
+      //                 Navigator.pop(context, false);
+      //               },
+      //             ),
+      //             FlatButton(
+      //               child: Text("取消"),
+      //               onPressed: () {
+      //                 Navigator.pop(context, true);
+      //               },
+      //             )
+      //           ],
+      //         );
+      //       },
+      //     );
+      //   },
+      //   child: Container(
+      //     height: 80.0,
+      //     child: Column(
+      //       children: <Widget>[
+      //         Container(
+      //           margin: EdgeInsets.only(top: 8),
+      //           child: Image.network(item.icons,
+      //               height: 60.0, width: 60.0),
+      //         ),
+      //         Text(
+      //           item.navText,
+      //           style: TextStyle(color: Colors.black38, fontSize: 12.0),
+      //         )
+      //       ],
+      //     ),
+      //   )
+      // );
+    
+  //   }).toList();
+  //   return tempNavList;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +152,10 @@ class _TopNavState extends State<TopNav>{
         shrinkWrap: true,
         crossAxisCount: 2,
         childAspectRatio: 1.0,
-        children: _GridViewNavList()
+        children: topNavData.map((item) {
+          return _gridViewItemUI(context, item);
+        }).toList(),
+        // children: _GridViewNavList()
       )
     );
   }

@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'package:dio/dio.dart';
+import 'dart:async';
+import '../service/service_method.dart';
+import '../model/home/jd_skill_goods.dart';
 
 class MySkill extends StatefulWidget {
   MySkill({Key key}) : super(key: key);
@@ -7,11 +13,91 @@ class MySkill extends StatefulWidget {
 }
 
 class _MySkillState extends State<MySkill> {
+  
+  List jdSkillGoodsList=[]; //京东秒杀
+  String timesDec;  //时间场次
+  String lastTimes; //倒计时
+  //顶部分类导航
+  void _getJdSkillGoodsData() async{
+   await getAddJDSkillGoods().then((val) {
+    JdSkillGoods jdSkillGoods = JdSkillGoods.fromJson(val);
+    // jdSkillGoods.data.skillList.forEach((item)=> print(item));
+    setState(() {
+      jdSkillGoodsList=jdSkillGoods.data.skillList;
+      timesDec= jdSkillGoods.data.timeDec;
+      lastTimes= jdSkillGoods.data.lastTime;
+    });
+      print('-------------');
+      var a=DateTime.now();
+      var strTime=a.toString().substring(0,10);
+      print(DateTime.parse('$strTime $lastTimes').millisecondsSinceEpoch / 1000);
+      print('-------------');
+    });
+  }
+
+  @override
+  void initState(){
+    _getJdSkillGoodsData();   //京东秒杀
+    super.initState();
+  }
+
+  //京东秒杀单个子项
+  Widget _jdSkillItemView(BuildContext context, item){
+    return InkWell(
+      onTap: (){
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) {
+            return CupertinoAlertDialog(
+              content: new SingleChildScrollView(
+                child: ListBody(
+                  children: <Widget>[Text("点击了ID${item.id}")],
+                ),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text("确定"),
+                  onPressed: () {
+                    Navigator.pop(context, false);
+                  },
+                ),
+                FlatButton(
+                  child: Text("取消"),
+                  onPressed: () {
+                    Navigator.pop(context, true);
+                  },
+                )
+              ],
+            );
+          },
+        );
+      },
+      child: Container(
+      margin: EdgeInsets.only(left: 15.0),
+      child: Column(
+        children: <Widget>[
+            Image.network('${item.imgUrl}',height: 80.0,width: 80.0),
+            Container(
+            margin: EdgeInsets.only(top: 4.0),
+            child: Text('￥${item.discountPrice}',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
+            ),
+            Container(child: Text('￥${item.oldPrice}',style: TextStyle(
+            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
+            )
+            )
+        ],
+      )
+    ),
+   );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200.0,
       margin: EdgeInsets.fromLTRB(6, 10, 6, 10),
+      padding: EdgeInsets.only(top: 5.0),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.white),
       child: GridView.count(
         scrollDirection: Axis.horizontal,
@@ -23,6 +109,7 @@ class _MySkillState extends State<MySkill> {
             children: <Widget>[
               Container(
                 height: 45.0,
+                 padding: EdgeInsets.fromLTRB(0, 0, 0, 5.0),
                 decoration: BoxDecoration(
                     image:
                         DecorationImage(image: AssetImage('images/bg.png'))),
@@ -38,7 +125,7 @@ class _MySkillState extends State<MySkill> {
                     ),
                     Container(
                       margin: EdgeInsets.only(right: 15.0),
-                      child: Text('16点场',
+                      child: Text('$timesDec',
                           style: TextStyle(
                               fontSize: 15.0, fontWeight: FontWeight.w600)),
                     ),
@@ -48,7 +135,7 @@ class _MySkillState extends State<MySkill> {
                           border:
                               Border.all(color: Colors.pink[50], width: 1.0),
                           borderRadius: BorderRadius.circular(10.0)),
-                      child: Text('00 : 28 : 11'),
+                      child: Text('$lastTimes'),
                     ),
                     Container(
                         margin: EdgeInsets.only(left: 80.0),
@@ -74,123 +161,13 @@ class _MySkillState extends State<MySkill> {
                 ),
               ),
               Container(
-                height: 140.0,
+                height: 150.0,
                 child: ListView(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.only(left: 15.0),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/mz04.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥569',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥1369',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 15.0),
-                          child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/mz02.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥999',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥3369',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 15.0),
-                        child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/mz01.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥369',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥869',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 15.0),
-                        child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/goods3.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥169',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥769',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )),
-                    Container(
-                      margin: EdgeInsets.only(left: 15.0),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/goods1.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥369',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥869',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 15.0),
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/goods8.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥169',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥569',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )
-                    ),
-                    Container(
-                        margin: EdgeInsets.only(left: 15.0),
-                        child: Column(
-                        children: <Widget>[
-                          Image.asset('images/shops/goods11.jpg',height: 80.0,width: 80.0),
-                          Container(
-                            margin: EdgeInsets.only(top: 4.0),
-                            child: Text('￥269',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
-                          ),
-                          Container(child: Text('￥869',style: TextStyle(
-                            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-                            )
-                          )
-                        ],
-                      )),
-                    
-                  ],
+                  children: jdSkillGoodsList.map((item){
+                      return _jdSkillItemView(context,item);
+                  }).toList()
                 ),
               )
             ],

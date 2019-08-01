@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/scroll_controller.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';  //轮播图插件
 

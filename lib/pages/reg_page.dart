@@ -95,7 +95,7 @@ class _RegPageState extends State<RegPage> {
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIos: 1,
-                                backgroundColor: Colors.pink[50],
+                                backgroundColor: Colors.blue[50],
                                 textColor: Colors.black38,
                                 fontSize: 16.0
                               );
@@ -106,7 +106,7 @@ class _RegPageState extends State<RegPage> {
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIos: 1,
-                                backgroundColor: Colors.pink[50],
+                                backgroundColor: Colors.blue[50],
                                 textColor: Colors.black38,
                                 fontSize: 16.0
                               );

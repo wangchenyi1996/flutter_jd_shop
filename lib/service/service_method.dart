@@ -37,3 +37,7 @@ Future getHomeSelectRecormendGoods() async {
 Future getHomeTopNavList() async {
   return request('homeTopNavData',null);
 }
+// 获取首页--顶部导航分类
+Future getAddJDSkillGoods() async {
+  return request('jdSkillGoods',null);
+}
