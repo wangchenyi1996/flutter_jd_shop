@@ -1,0 +1,160 @@
+name: demo
+description: A new Flutter project.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  fluttertoast: ^3.1.0
+  flutter_swiper: ^1.1.6
+  fluro: ^1.5.1
+  dio: ^2.1.13
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://www.dartlang.org/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+   - images/cover_img.jpg
+   - images/face.jpg
+   - images/shop1.jpg
+   - images/shop2.jpg
+   - images/shop3.jpg
+   - images/shop16.jpg
+   - images/shop17.jpg
+   - images/shop13.jpg
+   - images/shop14.png
+   - images/shop12.png
+   - images/shop18.png
+   - images/shop19.png
+   - images/shop20.png
+   - images/shop21.jpg
+   - images/shops/goods1.jpg
+   - images/shops/goods2.jpg
+   - images/shops/goods3.jpg
+   - images/shops/goods4.jpg
+   - images/shops/goods5.jpg
+   - images/shops/goods6.jpg
+   - images/shops/goods7.jpg
+   - images/shops/goods8.jpg
+   - images/shops/goods9.jpg
+   - images/shops/goods10.jpg
+   - images/shops/goods11.jpg
+   - images/shops/goods12.jpg
+   - images/shops/goods13.jpg
+   - images/shops/goods14.jpg
+   - images/shops/goods15.jpg
+   - images/shops/mz01.jpg
+   - images/shops/mz02.jpg
+   - images/shops/mz03.jpg
+   - images/shops/mz04.jpg
+   - images/shops/mz05.jpg
+   - images/shops/sh01.jpg
+   - images/shops/sh02.jpg
+   - images/shops/sh03.jpg
+   - images/shops/sh04.jpg
+   - images/shops/yd01.jpg
+   - images/shops/yd02.jpg
+   - images/shops/yd03.jpg
+   - images/shops/yd04.jpg
+   - images/user_bg.jpg
+   - images/face.png
+   - images/vip.png
+   - images/qbdd.png
+   - images/dfk.png
+   - images/dsh.png
+   - images/tk.png
+   - images/lishi.png
+   - images/icons/wodeqianbao.png
+   - images/icons/right.png
+   - images/icons/address.png
+   - images/icons/fenxiang.png
+   - images/icons/message.png
+   - images/icons/shoucang.png
+   - images/icons/shezhi.png
+   - images/icons/qq.png
+   - images/icons/weixin.png
+   - images/icons/sina.png
+   - images/bg.png
+   - images/home/home1.jpg
+   - images/home/home2.jpg
+   - images/home/home3.jpg
+   - images/home/home4.jpg
+   - images/home/home5.jpg
+   - images/home/home6.jpg
+   - images/home/home7.jpg
+   - images/home/home8.jpg
+   - images/home/home9.jpg
+   - images/home/home10.jpg
+   - images/home/home11.jpg
+   - images/home/home12.jpg
+   - images/home/mr01.jpg
+   - images/home/mr02.jpg
+   - images/home/mr03.jpg
+   - images/home/mr04.jpg
+   - images/home/mr05.jpg
+   - images/home/mr06.jpg
+   - images/home/mr07.jpg
+   - images/home/mr08.jpg
+   - images/meiri/mr1.jpg
+   - images/meiri/mr2.jpg
+   - images/meiri/mr3.jpg
+   - images/meiri/mr4.jpg
+   - images/meiri/mr5.jpg
+   - images/meiri/mr6.jpg
+   - images/meiri/mr7.jpg
+   - images/meiri/mr8.jpg
+   - images/jd_news.jpg
+   - images/recormend/r1.jpg
+   - images/ns3.jpg
+
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+    - family: MyIcons
+      fonts:
+        - asset: lib/assets/fonts/iconfont.ttf
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
