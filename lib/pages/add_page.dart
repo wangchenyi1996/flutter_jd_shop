@@ -25,7 +25,7 @@ class _AddPageState extends State<AddPage> {
   Widget build(BuildContext context) {
     return Container(
       child: ListView(
-        shrinkWrap: true,
+        // shrinkWrap: true,
         children: <Widget>[
           MySwiper(),   //轮播图
           TopNav(),     //滚动分类导航

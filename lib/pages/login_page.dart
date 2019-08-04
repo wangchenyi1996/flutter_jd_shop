@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/form.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../config/NavigatorUtil.dart';
+
 class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
@@ -88,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                             print(_unameController.text);
                             if(_pwdController.text=='123456'&&_unameController.text=='wangqiang'){
                               Fluttertoast.showToast(
-                                msg: "登录成功，去首页逛逛吧",
+                                msg: "登录成功，快去首页逛逛吧！",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIos: 1,
@@ -96,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                                 textColor: Colors.black38,
                                 fontSize: 16.0
                               );
-                              Navigator.pushNamed(context, '/');
+                              NavigatorUtil.goLoginPage(context);
                             }else{
                               Fluttertoast.showToast(
                                   msg: "用户名或密码错误",

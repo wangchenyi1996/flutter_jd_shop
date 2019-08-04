@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/form.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../config/NavigatorUtil.dart';
+
 class RegPage extends StatefulWidget {
   RegPage({Key key}) : super(key: key);
 
@@ -91,7 +93,7 @@ class _RegPageState extends State<RegPage> {
                             print(_unameController.text);
                             if(_unameController.text!='wangqiang'){
                                Fluttertoast.showToast(
-                                msg: "注册成功哦，快去逛逛",
+                                msg: "注册成功哦，快去逛逛把",
                                 toastLength: Toast.LENGTH_SHORT,
                                 gravity: ToastGravity.CENTER,
                                 timeInSecForIos: 1,
@@ -99,7 +101,8 @@ class _RegPageState extends State<RegPage> {
                                 textColor: Colors.black38,
                                 fontSize: 16.0
                               );
-                              Navigator.pushNamed(context, '/');
+                              // Navigator.pushNamed(context, '/root');
+                              NavigatorUtil.goRegPage(context);
                             }else{
                               Fluttertoast.showToast(
                                 msg: "此用户已存在，请重新注册",

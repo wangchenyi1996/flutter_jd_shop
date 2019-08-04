@@ -1,12 +1,31 @@
-import 'package:demo/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 
-import 'package:demo/pages/index_page.dart';
-
 //引入路由配置
-import './routes/routes.dart';
+import 'package:fluro/fluro.dart';
+import './config/application.dart';
+import './config/route_handlers.dart';
+import './config/routes.dart';
 
-void main() => runApp(MyApp());
+import 'package:provide/provide.dart';
+import './pages/provide/goodsDetailPage.dart';
+
+void main() {
+  // 注册 fluro routes
+  Router router = Router();
+  Routes.configureRoutes(router);
+  Application.router = router;
+
+  var deatail=GoodsDetailPage();
+  var providers=Providers();
+  providers..provide(Provider<GoodsDetailPage>.value(deatail));
+  runApp(
+    ProviderNode(
+      child:MyApp(),
+      providers:providers
+    )
+  );
+}
+
 
 class MyApp extends StatelessWidget {
 
@@ -19,11 +38,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.blue[300]
         ),
-        home: SplashPage(),
-        // home: HomePage(),
-        // initialRoute: '/',
-        // initialRoute: '/splash',
-        onGenerateRoute: onGenerateRoute
+        // 生成路由
+        onGenerateRoute: Application.router.generator,
       ),
     );
   }

@@ -15,26 +15,17 @@ class _MyRecormendState extends State<MyRecormend> {
   List addJJXYdata1=[];
   List addJJXYdata2=[];
   List addJJXYdata3=[];
-  String cateName1;
-  String cateIntro1;
-  String cateName2;
-  String cateIntro2;
+
   void _getJJXYData() async{
    await getAddJYXYGoods().then((val) {
       ADDJJXY addjjxy = ADDJJXY.fromJson(val);
-      if(mounted){
+      // if(mounted){
         setState(() {
-          addJJXYdata1=addjjxy.data.category1[0].cateImg1;
-          cateName1=addjjxy.data.category1[0].cateName1;
-          cateIntro1=addjjxy.data.category1[0].cateIntro1;
-
-          addJJXYdata2=addjjxy.data.category2[0].cateImg2;
-          cateName2=addjjxy.data.category2[0].cateName2;
-          cateIntro2=addjjxy.data.category2[0].cateIntro2;
-
+          addJJXYdata1=addjjxy.data.category1;
+          addJJXYdata2=addjjxy.data.category2;
           addJJXYdata3=addjjxy.data.category3;
         });
-      }
+      // }
     });
   }
 
@@ -134,14 +125,14 @@ class _MyRecormendState extends State<MyRecormend> {
                                     Container(
                                       // margin: EdgeInsets.only(left: 20.0),
                                       child: Text(
-                                        '$cateName1',
+                                        '${addJJXYdata1[0].cateName1}',
                                         style: TextStyle(color: Colors.green[300],fontSize: 18.0),
                                       ),
                                     ),
                                     Container(
                                       margin: EdgeInsets.only(bottom: 5.0),
                                       child: Text(
-                                        '$cateIntro1',
+                                        '${addJJXYdata1[0].cateIntro1}',
                                         style: TextStyle(color: Colors.black38,fontSize: 14.0),
                                       ),
                                     ),
@@ -149,7 +140,7 @@ class _MyRecormendState extends State<MyRecormend> {
                                 ),
                                 
                                 Row(
-                                  children: addJJXYdata1.map<Widget>((item) {
+                                  children: addJJXYdata1[0].cateImg1.map<Widget>((item) {
                                     return _categroy1ItemUI(context, item);
                                   }).toList(),
                                 )
@@ -175,14 +166,14 @@ class _MyRecormendState extends State<MyRecormend> {
                                    Container(
                                     // margin: EdgeInsets.only(left: 20.0),
                                     child: Text(
-                                      '$cateName2',
+                                      '${addJJXYdata2[0].cateName2}',
                                       style: TextStyle(color: Colors.green[300],fontSize: 18.0),
                                     ),
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(bottom: 5.0),
                                     child: Text(
-                                      '$cateIntro2',
+                                      '${addJJXYdata2[0].cateIntro2}',
                                       style: TextStyle(color: Colors.black38,fontSize: 14.0),
                                     ),
                                   ),
@@ -190,7 +181,7 @@ class _MyRecormendState extends State<MyRecormend> {
                               ),
                               
                               Row(
-                                children: addJJXYdata2.map<Widget>((item) {
+                                children: addJJXYdata2[0].cateImg2.map<Widget>((item) {
                                     return _categroy1ItemUI(context, item);
                                   }).toList(),
                               )

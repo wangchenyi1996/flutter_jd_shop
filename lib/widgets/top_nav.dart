@@ -21,13 +21,16 @@ class _TopNavState extends State<TopNav>{
   //顶部分类导航
   void _getTopNavData() async{
    await getHomeTopNavList().then((val) {
-    print(val);
+    // print(val);
     TopNavList topNavList = TopNavList.fromJson(val);
       // topNavList.data.navList.forEach((item)=> print(item.navText));
-      setState(() {
-        topNavData=topNavList.data.navList;
-      });
-      // print(topNavData[0].navText);
+
+      // if(mounted){
+        setState(() {
+            topNavData=topNavList.data.navList;
+        });
+      // }
+
     });
   }
 
@@ -36,6 +39,11 @@ class _TopNavState extends State<TopNav>{
     _getTopNavData();   //顶部分类导航
     super.initState();
   }
+  // @override
+  // void dispose() {
+  //   topNavData = null;
+  //   super.dispose();
+  // }
 
   // 分类导航分页处理
   Widget pageItem(BuildContext context, dynamic item) => SizedBox(
@@ -89,6 +97,25 @@ class _TopNavState extends State<TopNav>{
     ),
   );
 
+  // GridView pageWidget(BuildContext context, int page) {
+  //   List<dynamic> data;
+  //   if ((page + 1) * 8 < topNavData.length) {
+  //     data = topNavData.sublist(page * 8, page * 8+8 );
+  //   } else {
+  //      data = topNavData.sublist(page * 8, topNavData.length );
+  //   }
+  //   return GridView.count(
+  //     physics: NeverScrollableScrollPhysics(),
+  //     scrollDirection: Axis.horizontal,
+  //     shrinkWrap: true,
+  //     crossAxisCount: 2,
+  //     childAspectRatio: 1.0,
+  //     children: data.map((i) {
+  //       return pageItem(context, i);
+  //     }).toList(),
+  //   );
+  // }
+
   GridView pageWidget(BuildContext context, int page) {
     List<dynamic> data;
     if ((page + 1) * 8 < topNavData.length) {
@@ -96,7 +123,18 @@ class _TopNavState extends State<TopNav>{
     } else {
       data = topNavData.sublist(page * 8, topNavData.length );
     }
+    if(data==null){
+      return GridView.count(
+          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          crossAxisCount: 2,
+          childAspectRatio: 1.0,
+          children: [],
+        );
+    }
     return GridView.count(
+      physics: NeverScrollableScrollPhysics(),
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,
       crossAxisCount: 2,
@@ -106,6 +144,7 @@ class _TopNavState extends State<TopNav>{
       }).toList(),
     );
   }
+
 
   @override
   Widget build(BuildContext context) {

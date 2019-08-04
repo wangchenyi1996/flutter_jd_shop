@@ -27,6 +27,10 @@ dependencies:
   flutter_swiper: ^1.1.6
   fluro: ^1.5.1
   dio: ^2.1.13
+  flutter_screenutil: ^0.5.3
+  flutter_drag_scale: 
+    git: https://github.com/LiuC520/flutter_drag_scale.git
+  provide: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -136,8 +140,20 @@ flutter:
    - images/meiri/mr7.jpg
    - images/meiri/mr8.jpg
    - images/jd_news.jpg
-   - images/recormend/r1.jpg
    - images/ns3.jpg
+   - images/icons/icon_cart.png
+   - images/icons/icon_connect.png
+   - images/icons/icon_shop.png
+   - images/recormend/goodsdetail1.jpg
+   - images/recormend/goodsdetail2.jpg
+   - images/recormend/goodsdetail3.jpg
+   - images/recormend/goodsdetail4.jpg
+   - images/recormend/goodsdetail5.jpg
+   - images/recormend/goodsdetail8.jpg
+   - images/recormend/goodsdetail9.jpg
+   - images/recormend/goodsdetail10.jpg
+   - images/recormend/goodsdetail7.jpg
+   - images/recormend/goodsdetail6.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'dart:async';
 import '../service/service_method.dart';
 import '../model/home/jd_skill_goods.dart';
+import 'package:demo/config/NavigatorUtil.dart';
 
 class MySkill extends StatefulWidget {
   MySkill({Key key}) : super(key: key);
@@ -22,16 +23,20 @@ class _MySkillState extends State<MySkill> {
    await getAddJDSkillGoods().then((val) {
     JdSkillGoods jdSkillGoods = JdSkillGoods.fromJson(val);
     // jdSkillGoods.data.skillList.forEach((item)=> print(item));
-    setState(() {
-      jdSkillGoodsList=jdSkillGoods.data.skillList;
-      timesDec= jdSkillGoods.data.timeDec;
-      lastTimes= jdSkillGoods.data.lastTime;
-    });
-      print('-------------');
-      var a=DateTime.now();
-      var strTime=a.toString().substring(0,10);
-      print(DateTime.parse('$strTime $lastTimes').millisecondsSinceEpoch / 1000);
-      print('-------------');
+
+      // if(mounted){
+        setState(() {
+          jdSkillGoodsList=jdSkillGoods.data.skillList;
+          timesDec= jdSkillGoods.data.timeDec;
+          lastTimes= jdSkillGoods.data.lastTime;
+        });
+      // }
+
+    
+      // var a=DateTime.now();
+      // var strTime=a.toString().substring(0,10);
+      // var last = DateTime.parse('$strTime $lastTimes').millisecondsSinceEpoch / 1000;
+      
     });
   }
 
@@ -40,51 +45,33 @@ class _MySkillState extends State<MySkill> {
     _getJdSkillGoodsData();   //京东秒杀
     super.initState();
   }
+  // @override
+  // void dispose() {
+  //   jdSkillGoodsList = null;
+  //   timesDec=null;
+  //   lastTimes=null;
+  //   super.dispose();
+  // }
 
   //京东秒杀单个子项
   Widget _jdSkillItemView(BuildContext context, item){
     return InkWell(
       onTap: (){
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) {
-            return CupertinoAlertDialog(
-              content: new SingleChildScrollView(
-                child: ListBody(
-                  children: <Widget>[Text("点击了ID${item.id}")],
-                ),
-              ),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text("确定"),
-                  onPressed: () {
-                    Navigator.pop(context, false);
-                  },
-                ),
-                FlatButton(
-                  child: Text("取消"),
-                  onPressed: () {
-                    Navigator.pop(context, true);
-                  },
-                )
-              ],
-            );
-          },
-        );
+        NavigatorUtil.goGoodsDetailPage(context,'${item.id}');
       },
+      
       child: Container(
       margin: EdgeInsets.only(left: 15.0),
       child: Column(
         children: <Widget>[
             Image.network('${item.imgUrl}',height: 80.0,width: 80.0),
             Container(
-            margin: EdgeInsets.only(top: 4.0),
-            child: Text('￥${item.discountPrice}',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
+              margin: EdgeInsets.only(top: 4.0),
+              child: Text('￥${item.discountPrice}',style: TextStyle(color: Colors.red,fontSize: 17.0,fontWeight: FontWeight.w700))
             ),
             Container(child: Text('￥${item.oldPrice}',style: TextStyle(
-            color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
-            )
+              color: Colors.grey,fontSize: 15.0,fontWeight: FontWeight.w500,decoration: TextDecoration.lineThrough)
+              )
             )
         ],
       )
@@ -100,6 +87,7 @@ class _MySkillState extends State<MySkill> {
       padding: EdgeInsets.only(top: 5.0),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Colors.white),
       child: GridView.count(
+        // physics: NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         crossAxisCount: 1,
@@ -163,7 +151,7 @@ class _MySkillState extends State<MySkill> {
               Container(
                 height: 150.0,
                 child: ListView(
-                  shrinkWrap: true,
+                  // shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   children: jdSkillGoodsList.map((item){
                       return _jdSkillItemView(context,item);

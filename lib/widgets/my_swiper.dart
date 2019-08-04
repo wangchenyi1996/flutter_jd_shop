@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_swiper/flutter_swiper.dart';  //轮播图插件
 
+import 'package:flutter_drag_scale/flutter_drag_scale.dart';
+
 class MySwiper extends StatefulWidget {
   MySwiper({Key key}) : super(key: key);
 
@@ -18,10 +20,13 @@ class _MySwiperState extends State<MySwiper> {
   ];
 
   Widget _swiperBuilder(BuildContext context, int index) {
-    return (
-      Image.network(
-        list[index],
-        fit: BoxFit.cover,
+    return Container(
+      child: DragScaleContainer(
+      doubleTapStillScale: true,
+        child:Image.network(
+          '${list[index]}',
+          fit: BoxFit.cover,
+        )
       )
     );
   }

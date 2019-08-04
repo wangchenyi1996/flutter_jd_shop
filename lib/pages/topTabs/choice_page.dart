@@ -27,7 +27,7 @@ class _ChoicePageState extends State<ChoicePage> {
      MyChannelModel myChannelModel = MyChannelModel.fromJson(val);
         // print(myChannelModel.msg);
         // print(myChannelModel.data.mylist);
-        myChannelModel.data.mylist.forEach((item)=> print(item.name1));
+        // myChannelModel.data.mylist.forEach((item)=> print(item.name1));
         setState(() {
           mylistData=myChannelModel.data.mylist;
         });
@@ -43,7 +43,7 @@ class _ChoicePageState extends State<ChoicePage> {
     //  print(val.runtimeType); //类型
      SelectRecormendGoods selectRecormendGoods = SelectRecormendGoods.fromJson(val);
       // print(selectRecormendGoods.data.selectList);
-      selectRecormendGoods.data.selectList.forEach((item)=> print(item.describtion));
+      // selectRecormendGoods.data.selectList.forEach((item)=> print(item.describtion));
       setState(() {
         selectRecormendGoodsList=selectRecormendGoods.data.selectList;
       });

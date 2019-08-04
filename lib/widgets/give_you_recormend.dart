@@ -8,11 +8,10 @@ class GiveYouRecormend extends StatefulWidget {
 }
 
 class _GiveYouRecormendState extends State<GiveYouRecormend> {
-
    //定义一个方法，来模拟数据
   List<Widget> _getDataList(){
     List<Widget> list=new List();
-    for(var i=0;i<20;i++){
+    for(var i=0;i<10;i++){
       list.add(
         Container(
           height: 270.0,
@@ -430,6 +429,7 @@ class _GiveYouRecormendState extends State<GiveYouRecormend> {
     }
     return list;
   }
+ 
 
   @override
   Widget build(BuildContext context) {

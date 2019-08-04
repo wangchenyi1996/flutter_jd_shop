@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import './cart/cart_head.dart';
+import './cart/cart_fixed.dart';
+import './cart/cart_jdzy.dart';
+import './cart/cart_main.dart';
+
 class CartPage extends StatefulWidget {
   CartPage({Key key}) : super(key: key);
 
@@ -9,10 +14,23 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text('购物车'),
-      ),
+    return Stack(
+      fit: StackFit.expand,
+      children: <Widget>[
+        ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            CartHead(),
+            Cartjdzy(),
+            CartMain()
+          ]
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: CartFixed(),
+        )
+      ]
     );
   }
 }

@@ -33,11 +33,18 @@ Future getHomeMyChannelContent() async {
 Future getHomeSelectRecormendGoods() async {
   return request('homeSelectRccormendGoods',null);
 }
+
 // 获取首页--顶部导航分类
 Future getHomeTopNavList() async {
   return request('homeTopNavData',null);
 }
-// 获取首页--顶部导航分类
+
+// 获取发布页面--顶部导航分类
 Future getAddJDSkillGoods() async {
   return request('jdSkillGoods',null);
+}
+
+// 获取发布页面--顶部导航分类
+Future getAddJYXYGoods() async {
+  return request('addJYXY',null);
 }
