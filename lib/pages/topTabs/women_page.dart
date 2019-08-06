@@ -6,8 +6,10 @@ class WomenPage extends StatefulWidget {
   _WomenPageState createState() => _WomenPageState();
 }
 
-class _WomenPageState extends State<WomenPage> {
-
+class _WomenPageState extends State<WomenPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
+  
    //定义一个方法，来模拟数据
   List<Widget> _getDataList(){
     List<Widget> list=new List();

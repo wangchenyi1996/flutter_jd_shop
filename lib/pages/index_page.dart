@@ -12,7 +12,10 @@ class IndexPage extends StatefulWidget {
   _IndexPageState createState() => _IndexPageState();
 }
 
-class _IndexPageState extends State<IndexPage> {
+class _IndexPageState extends State<IndexPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
+
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.home),
@@ -274,8 +277,12 @@ class _IndexPageState extends State<IndexPage> {
           ),
         ),
       ),
-      body: Container(
-        child: tabBodies[currentIndex],
+      // body: Container(
+      //   child: tabBodies[currentIndex],
+      // ),
+      body: IndexedStack(
+        index: currentIndex,
+        children: tabBodies
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomTabs,

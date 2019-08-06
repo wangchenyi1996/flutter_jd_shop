@@ -20,8 +20,10 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin{
 
+  @override
+  bool get wantKeepAlive => true;
 
   //定义几个顶部tabs
   final List<Tab> myTabs = <Tab>[
@@ -65,7 +67,6 @@ class _HomePageState extends State<HomePage> {
                       child: TabBar(isScrollable: true, tabs: myTabs)),
                 ),
                 Expanded(
-                  // height: 1000.0,
                     child: TabBarView(
                   children: topTabBarPages,
                 ))
@@ -75,4 +76,5 @@ class _HomePageState extends State<HomePage> {
         
     );
   }
+
 }

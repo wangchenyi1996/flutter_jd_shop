@@ -8,6 +8,7 @@ import './config/routes.dart';
 
 import 'package:provide/provide.dart';
 import './pages/provide/goodsDetailPage.dart';
+import './pages/provide/child_category.dart';
 
 void main() {
   // 注册 fluro routes
@@ -16,8 +17,10 @@ void main() {
   Application.router = router;
 
   var deatail=GoodsDetailPage();
+  var childCategory=ChildCategory();
   var providers=Providers();
-  providers..provide(Provider<GoodsDetailPage>.value(deatail));
+  providers..provide(Provider<GoodsDetailPage>.value(deatail))
+  ..provide(Provider<ChildCategory>.value(childCategory));
   runApp(
     ProviderNode(
       child:MyApp(),

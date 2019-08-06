@@ -48,3 +48,13 @@ Future getAddJDSkillGoods() async {
 Future getAddJYXYGoods() async {
   return request('addJYXY',null);
 }
+
+// 获取商品分类
+Future getGoodsCategroy() async {
+  return request('goods_categroy',null);
+}
+
+// 获取商品分类下的商品列表
+Future getGoodsCategroyList(formData) async {
+  return request('goods_categroy_list',formData);
+}

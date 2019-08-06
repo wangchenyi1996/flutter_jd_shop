@@ -6,7 +6,10 @@ class ChildrenPage extends StatefulWidget {
   _ChildrenPageState createState() => _ChildrenPageState();
 }
 
-class _ChildrenPageState extends State<ChildrenPage> {
+class _ChildrenPageState extends State<ChildrenPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
+
   //定义一个方法，来模拟数据
   List<Widget> _getDataList(){
     List<Widget> list=new List();

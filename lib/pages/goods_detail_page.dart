@@ -34,7 +34,7 @@ class _GoodsDetailPageState extends State<GoodsDetailPage> {
         brightness: Brightness.light,
       ),
       body: Stack(
-         fit: StackFit.expand,
+          fit: StackFit.expand,
           children: <Widget>[
             ListView(
               shrinkWrap: true,

@@ -13,7 +13,11 @@ class ChoicePage extends StatefulWidget {
   _ChoicePageState createState() => _ChoicePageState();
 }
 
-class _ChoicePageState extends State<ChoicePage> {
+class _ChoicePageState extends State<ChoicePage> with AutomaticKeepAliveClientMixin{
+
+  @override
+  bool get wantKeepAlive => true;
+
   List mylistData=[];   //我的频道
   List selectRecormendGoodsList=[]; //精选推荐商品
   List selectGoodsLabel=[]; //精选推荐标签

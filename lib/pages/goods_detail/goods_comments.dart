@@ -241,6 +241,7 @@ class _GoodsCommentsState extends State<GoodsComments> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom: 50.0),
       child: ListView(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),

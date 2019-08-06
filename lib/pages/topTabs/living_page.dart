@@ -7,7 +7,9 @@ class LivePage extends StatefulWidget {
   _LivePageState createState() => _LivePageState();
 }
 
-class _LivePageState extends State<LivePage> {
+class _LivePageState extends State<LivePage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
 
   //定义一个方法，来模拟数据
   List<Widget> _getDataList(){

@@ -49,7 +49,7 @@ class _CartMainState extends State<CartMain> {
   //商品
   List<Widget> _cartGoodsList(){
     List<Widget> goodlist=[];
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 3; i++) {
       goodlist.add(
          Column(
            children: <Widget>[
@@ -160,7 +160,8 @@ class _CartMainState extends State<CartMain> {
   Widget build(BuildContext context) {
     return Container(
        color: Colors.white,
-      padding: EdgeInsets.all(10.0),
+      //  padding: EdgeInsets.all(10.0),
+       padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 50.0),
        child: ListView(
          shrinkWrap: true,
          physics: NeverScrollableScrollPhysics(),

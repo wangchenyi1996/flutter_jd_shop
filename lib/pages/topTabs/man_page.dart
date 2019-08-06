@@ -6,7 +6,11 @@ class ManPage extends StatefulWidget {
   _ManPageState createState() => _ManPageState();
 }
 
-class _ManPageState extends State<ManPage> {
+class _ManPageState extends State<ManPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
+
+
   //定义一个方法，来模拟数据
   List<Widget> _getDataList(){
     List<Widget> list=new List();

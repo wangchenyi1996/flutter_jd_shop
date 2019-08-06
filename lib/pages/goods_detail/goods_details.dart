@@ -11,6 +11,7 @@ class _GoodsDetailsState extends State<GoodsDetails> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(bottom: 50.0),
       color: Colors.grey[200],
       child:ListView(
         shrinkWrap: true,

@@ -7,7 +7,9 @@ class BeautyPage extends StatefulWidget {
   _BeautyPageState createState() => _BeautyPageState();
 }
 
-class _BeautyPageState extends State<BeautyPage> {
+class _BeautyPageState extends State<BeautyPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
 
   //定义一个方法，来模拟数据
   List<Widget> _getDataList(){

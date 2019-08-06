@@ -28,9 +28,8 @@ dependencies:
   fluro: ^1.5.1
   dio: ^2.1.13
   flutter_screenutil: ^0.5.3
-  flutter_drag_scale: 
-    git: https://github.com/LiuC520/flutter_drag_scale.git
   provide: ^1.0.2
+  photo_view: ^0.3.3
 
 dev_dependencies:
   flutter_test:

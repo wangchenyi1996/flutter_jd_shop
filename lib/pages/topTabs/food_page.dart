@@ -6,7 +6,9 @@ class FoodPage extends StatefulWidget {
   _FoodPageState createState() => _FoodPageState();
 }
 
-class _FoodPageState extends State<FoodPage> {
+class _FoodPageState extends State<FoodPage> with AutomaticKeepAliveClientMixin{
+    @override
+  bool get wantKeepAlive => true;
 
   //定义一个方法，来模拟数据
   List<Widget> _getDataList(){
